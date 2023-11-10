@@ -1,0 +1,3 @@
+[submodule "slfsl"]
+	path = slfsl
+	url = https://github.com/mkostoevr/slfsl
