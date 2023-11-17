@@ -9,6 +9,36 @@ Current progress:
 - [ ] Progessive one-cell resizing.
 
 <!--
+## Hash Types
+
+1. Static/dynamic backet count (open/chained).
+2. Arbitrary/power of 2.
+3. Deletion? In open addressing mode should care about moving non-deleted items around.
+4. Special keys? Like empty string is deleted. Or intrioduce them manually and handle in inserts/deletes.
+5. Store keys with data (if they're small, cache-friendly)? Separately (if, for example, keys are small, but values are big, search over small keys will be faster than jumping over the key-value pairs. or wjatever). Guck tou. Or at all. Or maybe store in the first-level table only a part of the key, or just use only a art of the key.
+6. Keys, values "fat"? What?
+7. Hash value: store or always calculate?
+8. More requirements? Preserve order? Secondary keys? Use case: частотный словарь.
+9. Load factor?
+10. Buffer keys into the hash itself?
+11. Item fields order?
+12. Hash object fields order?
+13. Hash function to choose.
+14. Linear probing?
+15. Cuckoo hashing?
+16. SIMD?
+17. Move to front (MTF) for chaining (move value found in the list to front to find it faster next time)
+18. Open addressing hash probe: linear (delta = const), double (delta = hash2(key)), quadratic (delta = n).
+19. Cuckoo hashing:
+    - Always only check 2 points.
+    - On insertion get rid of occupants until we have cycled.
+    - Change the hash function on cycling.
+20. Layout: SoA, AoS.
+21. Integer index instead of poiner.
+22. Unused/deleted flags may be put into the hash.
+23. Nondefault has function constants.
+24. Do not check keys?
+
 ### Sorted list
 
 - [x] Insertion.

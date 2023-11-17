@@ -39,6 +39,7 @@ enum {
 	HASH_ERROR_OOM,
 	HASH_ERROR_ALREADY_EXISTS,
 	HASH_ERROR_DOES_NOT_EXIST,
+	HASH_ERROR_DROP_FAILED,
 };
 
 struct Hash {
@@ -92,6 +93,20 @@ hash_insert(struct Hash *h, HASH_KEY_T key, HASH_VAL_T val)
 }
 
 #if 0
+/**
+ * 
+ */
+int
+hash_delete(struct Hash *h, HASH_KEY_T key)
+{
+	uint32_t hash = HASH_KEY_HASH_F(key) % h->backet_count;
+	struct List *backet = &h->table[hash];
+	if (list_drop(backet, key) == 0) {
+		return HASH_ERROR_DROP_FAILED;
+	}
+	return 0;
+}
+
 /**
  * Put a value by the given key in the hash table. Thread-safe.
  *
